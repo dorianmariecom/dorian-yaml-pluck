@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dorian-yaml-pluck (0.0.1)
+    dorian-yaml-pluck (0.0.2)
       yaml
 
 GEM
