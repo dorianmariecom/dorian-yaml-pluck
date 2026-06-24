@@ -1,28 +1,41 @@
-# `dorian-each`
+# `dorian-yaml-pluck`
 
-Evaluates some code on each line of the input
+Pluck one path from YAML input.
 
-e.g. `ls -l | each "puts l.split.first"`
-
-### Install
+## Install
 
 ```bash
-gem install dorian-each
+gem install dorian-yaml-pluck
 ```
 
-Or as part of my other gems:
+Also included in the aggregate gem:
 
 ```bash
 gem install dorian
 ```
 
-### Usage
-
-From my history:
+## Usage
 
 ```bash
-pbpaste | each "puts line.split('-')[1].split.first" | uniq
-git grep Thing test/ | grep isocode | each "puts l.split(':').first" | sort | uniq | xvim
-cat file.csv | each "code, name = l.split(\"\\t\"); if code.include?(','); puts code; else; puts code.gsub(' ', '') + ',' + name; end"
-git grep thing | grep " doc " | each "puts l.split(':').first" | xvim
+yaml-pluck [options] key [key ...] [file ...]
+```
+
+Run `yaml-pluck -h` for generated option details and `yaml-pluck -v` for the installed version.
+
+## Notes
+
+- Keys can be mapping keys or array indexes. Use `--yaml` for YAML output or `--ruby` for Ruby inspection output.
+
+## Examples
+
+### Pluck a mapping value
+
+```bash
+echo "name: Dorian" | yaml-pluck name
+```
+
+Output:
+
+```text
+Dorian
 ```
